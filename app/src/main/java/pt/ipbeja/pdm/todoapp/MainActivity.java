@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TodoAdapter adapter;
     private Toolbar toolbar;
+    private View noDataIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.toolbar = findViewById(R.id.toolbar);
-
+        this.noDataIndicator = findViewById(R.id.no_data_indicator);
         setSupportActionBar(toolbar);
 
         RecyclerView list = findViewById(R.id.todo_list);
@@ -63,11 +64,16 @@ public class MainActivity extends AppCompatActivity {
         // Esta é uma boa altura para ir buscar a lista de Todos à DB
         // O método onStart é invocado sempre que a Activity volta ao foco
         // Assim obtemos a lista de Todos actualizada sempre que abrimos esta Activity
+        refreshData();
+
+    }
+
+    private void refreshData() {
         List<Todo> todos = TodoDatabase.getInstance(getApplicationContext())
                 .todoDao()
                 .getAll();
+        noDataIndicator.setVisibility(todos.isEmpty() ? View.VISIBLE : View.INVISIBLE);
         adapter.setData(todos);
-
     }
 
 
