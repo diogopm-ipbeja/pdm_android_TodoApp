@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_button_text">Criar</string>
+    <string name="nothing_to_do_hint">Nada para fazer</string>
+    <string name="todo_description_hint">Descrição</string>
+    <string name="todo_title_hint">Título</string>
+</resources>

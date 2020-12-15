@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TodoApp</string>
+    <string name="app_name" translatable="false">TodoApp</string>
+    <string name="create_button_text">Create</string>
+    <string name="nothing_to_do_hint">Nothing to do</string>
+    <string name="todo_description_hint">Description</string>
+    <string name="todo_title_hint">Title</string>
 </resources>

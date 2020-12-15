@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
@@ -26,7 +27,8 @@ public class CreateTodoActivity extends AppCompatActivity {
         titleInput = findViewById(R.id.todo_title);
         descriptionInput = findViewById(R.id.todo_description);
 
-        Button btn = findViewById(R.id.create_todo_btn);
+        ExtendedFloatingActionButton btn = findViewById(R.id.create_todo_btn);
+
 
         btn.setOnClickListener(v -> {
             String title = titleInput.getText().toString();

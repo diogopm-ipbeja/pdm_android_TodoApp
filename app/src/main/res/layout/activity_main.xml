@@ -8,10 +8,10 @@
 
 
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,27 +38,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/no_data_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:visibility="visible"
-        android:visibility="invisible">
-
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nothing to do " />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="😌"
-            android:textSize="48sp" />
-
-
-    </LinearLayout>
+    <include layout="@layout/no_data_indicator" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.toolbar = findViewById(R.id.toolbar);
-        this.noDataIndicator = findViewById(R.id.no_data_indicator);
         setSupportActionBar(toolbar);
+
+
+        this.noDataIndicator = findViewById(R.id.no_data_indicator);
 
         RecyclerView list = findViewById(R.id.todo_list);
         FloatingActionButton button = findViewById(R.id.create_todo_btn);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CreateTodoActivity.class);
             startActivity(intent);
         });
+
 
     }
 
