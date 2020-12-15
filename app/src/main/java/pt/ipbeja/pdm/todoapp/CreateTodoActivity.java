@@ -30,7 +30,7 @@ public class CreateTodoActivity extends AppCompatActivity {
             String description = descriptionInput.getText().toString();
 
             // Criar um objecto da class Todo
-            Todo todo = new Todo(0, title, description, false);
+            Todo todo = new Todo(title, description, false);
 
             // Depois podemos terminar esta activity
             finish();

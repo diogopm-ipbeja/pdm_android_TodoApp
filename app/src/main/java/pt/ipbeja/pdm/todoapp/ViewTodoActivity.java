@@ -21,14 +21,13 @@ public class ViewTodoActivity extends AppCompatActivity {
         // No caso dos extras primitivos, temos de passar um valor default.
         // Este é o valor devolvido caso não exista um para a chave indicada
         // Uso o -1 para me indicar que é um identificador inválido.
-        long todoId = getIntent().getLongExtra(TODO_ID_KEY, -1);
+        /*long todoId = getIntent().getLongExtra(TODO_ID_KEY, -1);
 
         // Se o ID for inválido, termino de imediato a Activity (não há todo para este id)
         if(todoId == -1){
             finish();
             return;
-        }
-        // Caso contrário, continuamos
+        }*/
 
         TextView title = findViewById(R.id.title);
         TextView description = findViewById(R.id.description);
@@ -36,6 +35,7 @@ public class ViewTodoActivity extends AppCompatActivity {
 
 
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
         });
 
     }

@@ -14,10 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,9 +118,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
             itemView.setOnClickListener(v -> {
-                // Para ver o detalhe de um Todo, temos de passar o ID desse registo
-                // Ver método static start em ViewTodoActivity.
-                ViewTodoActivity.start(MainActivity.this, todo.getId());
             });
 
         }
