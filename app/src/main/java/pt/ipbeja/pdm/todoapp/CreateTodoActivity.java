@@ -1,17 +1,13 @@
 package pt.ipbeja.pdm.todoapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
-import pt.ipbeja.pdm.todoapp.data.database.TodoDao;
 import pt.ipbeja.pdm.todoapp.data.database.TodoDatabase;
 
 public class CreateTodoActivity extends AppCompatActivity {

@@ -1,20 +1,18 @@
 package pt.ipbeja.pdm.todoapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
-import pt.ipbeja.pdm.todoapp.data.database.TodoDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,20 +61,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Esta é uma boa altura para ir buscar a lista de Todos à DB
-        // O método onStart é invocado sempre que a Activity volta ao foco
-        // Assim obtemos a lista de Todos actualizada sempre que abrimos esta Activity
-        refreshData();
 
     }
 
-    private void refreshData() {
-        List<Todo> todos = TodoDatabase.getInstance(getApplicationContext())
-                .todoDao()
-                .getAll();
-        noDataIndicator.setVisibility(todos.isEmpty() ? View.VISIBLE : View.INVISIBLE);
-        adapter.setData(todos);
-    }
 
 
     public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
@@ -126,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
             isDone.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 // Sempre que mudar, actualizamos o objecto
                 todo.setDone(isChecked);
-                // E pedimos ao DAO que actualize o registo na DB
-                TodoDatabase.getInstance(getApplicationContext()).todoDao().update(todo);
+
+
             });
 
             itemView.setOnClickListener(v -> {

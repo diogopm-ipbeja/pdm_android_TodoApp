@@ -1,12 +1,12 @@
 package pt.ipbeja.pdm.todoapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
 import pt.ipbeja.pdm.todoapp.data.database.TodoDatabase;
