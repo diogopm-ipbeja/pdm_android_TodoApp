@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import pt.ipbeja.pdm.todoapp.data.Todo;
-import pt.ipbeja.pdm.todoapp.data.database.TodoDatabase;
-
 public class ViewTodoActivity extends AppCompatActivity {
 
     public static final String TODO_ID_KEY = "todo_id";
@@ -37,19 +34,8 @@ public class ViewTodoActivity extends AppCompatActivity {
         TextView description = findViewById(R.id.description);
         CheckBox checkBox = findViewById(R.id.done);
 
-        // vamos buscar o Todo para o ID indicado
-        Todo todo = TodoDatabase.getInstance(getApplicationContext()).todoDao().get(todoId);
 
-        // E populamos os campos
-        title.setText(todo.getTitle());
-        description.setText(todo.getDescription());
-        checkBox.setChecked(todo.isDone());
-
-        // Da mesma forma que fizemos no ViewHolder, ficamos à escuta de alterações na checkbox e
-        // actualizamos o registo da DB sempre que ocorra um desses eventos
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            todo.setDone(isChecked);
-            TodoDatabase.getInstance(getApplicationContext()).todoDao().update(todo);
         });
 
     }

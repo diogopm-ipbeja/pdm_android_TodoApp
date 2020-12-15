@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
-import pt.ipbeja.pdm.todoapp.data.database.TodoDatabase;
 
 public class CreateTodoActivity extends AppCompatActivity {
 
@@ -33,11 +32,6 @@ public class CreateTodoActivity extends AppCompatActivity {
             // Criar um objecto da class Todo
             Todo todo = new Todo(0, title, description, false);
 
-            // E pedir ao DAO que o insira na BD
-            TodoDatabase
-                    .getInstance(getApplicationContext())
-                    .todoDao()
-                    .insert(todo);
             // Depois podemos terminar esta activity
             finish();
 
