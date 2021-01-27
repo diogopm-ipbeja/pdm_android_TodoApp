@@ -9,15 +9,24 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
 
@@ -61,6 +70,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("todos")
+                .addSnapshotListener(this, (value, error) -> {
+                    if(error == null) {
+                        //  1 0 0 > 0 1 0 > 0 0 1
+                        //List<Todo> todos = value.toObjects(Todo.class);
+
+                        List<Todo> todos = new ArrayList<>();
+                        value.getDocuments().forEach(doc -> {
+                            String id = doc.getId();
+                            Todo todo = doc.toObject(Todo.class);
+                            todo.setFirestoreId(id);
+                            todos.add(todo);
+
+                        });
+                        /*List<Todo> todos = value.getDocuments()
+                                .stream()
+                                .map(doc -> doc.toObject(Todo.class).withFirestoreId(doc.getId()))
+                                .collect(Collectors.toList());*/
+
+
+                        adapter.setData(todos);
+
+                    }
+                    else {
+                        // todo mostrar um alertdialog
+                    }
+                });
 
 
     }
@@ -113,7 +151,10 @@ public class MainActivity extends AppCompatActivity {
             isDone.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 // Sempre que mudar, actualizamos o objecto
                 todo.setDone(isChecked);
-
+                FirebaseFirestore.getInstance()
+                        .collection("todos")
+                        .document(todo.getFirestoreId())
+                        .set(todo);
 
             });
 

@@ -1,11 +1,16 @@
 package pt.ipbeja.pdm.todoapp.data;
 
 
+import com.google.firebase.firestore.Exclude;
+
 public class Todo {
 
     private String title;
     private String description;
     private boolean isDone;
+    private String firestoreId;
+
+    public Todo() { }
 
     public Todo(String title, String description, boolean isDone) {
         this.title = title;
@@ -27,5 +32,19 @@ public class Todo {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public void setFirestoreId(String id) {
+        this.firestoreId = id;
+    }
+
+    public Todo withFirestoreId(String id) {
+        this.firestoreId = id;ma
+        return this;
+    }
+
+    @Exclude
+    public String getFirestoreId() {
+        return firestoreId;
     }
 }

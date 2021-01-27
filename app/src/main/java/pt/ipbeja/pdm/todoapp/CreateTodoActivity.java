@@ -5,7 +5,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import pt.ipbeja.pdm.todoapp.data.Todo;
 
@@ -32,8 +35,12 @@ public class CreateTodoActivity extends AppCompatActivity {
             // Criar um objecto da class Todo
             Todo todo = new Todo(title, description, false);
 
-            // Depois podemos terminar esta activity
-            finish();
+            FirebaseFirestore
+                    .getInstance()
+                    .collection("todos")
+                    .add(todo)
+                    .addOnSuccessListener(this, doc -> finish());
+
 
         });
 
